@@ -1,1 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import './app/scss/base';
+
+$light-theme: set-theme(white, black, #384661, #ccc9c9);
+$dark-theme: set-theme(black, white, #0f4c75, #202020);
+
+.light-theme {
+  @include theme($light-theme);
+}
+
+.dark-theme {
+  @include theme($dark-theme);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}

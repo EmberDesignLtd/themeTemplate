@@ -1,0 +1,43 @@
+@import './opacity_map';
+
+@function set-theme(
+  $background: white,
+  $foreground: black,
+  $cta: #24a8e6,
+  $background-alt: whitesmoke,
+  $cta2: #06a147
+) {
+  $opacities: null;
+
+  /**
+    * In general this should be fine for a multiple themed application just got to be careful not have
+    * a theme that sits to close to 50 mark in regards to lightness
+  **/
+
+  @if (lightness($background) > 50) {
+    $opacities: $opacities-light;
+  } @else {
+    $opacities: $opacities-dark;
+  }
+
+  @return (
+    opacities: $opacities,
+    colours: (
+      background: $background,
+      foreground: $foreground,
+      cta: $cta,
+      cta2: $cta2,
+      backgroundAlt: $background-alt,
+    )
+  );
+}
+
+/**
+* THEME IMPORTS
+**/
+
+@import '../header/header.theme';
+
+@mixin theme($theme) {
+  @include header-theme($theme);
+}

@@ -7,7 +7,14 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "lint:frontend": "npm run lint:src:ts && npm run lint:src:scss && npm run lint:src:html:fix",
+    "lint:frontend:fix": "npm run lint:src:ts:fix && npm run lint:src:scss:fix && npm run lint:src:html:fix",
+    "lint:frontend:html:fix": "gformat-html 'src/**/*.html'",
+    "lint:frontend:scss": "stylelint 'src/**/*.scss'",
+    "lint:frontend:scss:fix": "stylelint 'src/**/*.scss' --fix",
+    "lint:frontend:ts": "gts check src/**/*.ts",
+    "lint:frontend:ts:fix": "gts fix src/**/*.ts"
   },
   "private": true,
   "dependencies": {
@@ -27,10 +34,12 @@
     "@angular-devkit/build-angular": "~0.1000.0",
     "@angular/cli": "~10.0.0",
     "@angular/compiler-cli": "~10.0.0",
-    "@types/node": "^12.11.1",
     "@types/jasmine": "~3.5.0",
     "@types/jasminewd2": "~2.0.3",
+    "@types/node": "^12.11.1",
     "codelyzer": "^6.0.0-next.1",
+    "gts": "^1.1.2",
+    "husky": "^4.2.5",
     "jasmine-core": "~3.5.0",
     "jasmine-spec-reporter": "~5.0.0",
     "karma": "~5.0.0",
@@ -38,9 +47,25 @@
     "karma-coverage-istanbul-reporter": "~3.0.2",
     "karma-jasmine": "~3.3.0",
     "karma-jasmine-html-reporter": "^1.5.0",
+    "lint-staged": "^10.2.11",
     "protractor": "~7.0.0",
+    "rxjs-tslint-rules": "^4.34.0",
+    "stylelint": "^13.6.1",
+    "stylelint-config-sass-guidelines": "^7.0.0",
+    "stylelint-config-standard": "^20.0.0",
+    "stylelint-order": "^4.1.0",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
+    "tslint-config-prettier": "^1.18.0",
     "typescript": "~3.9.5"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.ts": "gts check",
+    "src/**/*.scss": "stylelint"
   }
 }

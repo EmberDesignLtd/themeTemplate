@@ -1,0 +1,21 @@
+$opacities-light: (
+  default: 1,
+  primary-text: 1,
+  secondary-text: 0.8,
+  box-shadow: 0.5,
+  border-strong: 0.8,
+  border-medium: 0.6,
+  border-weak: 0.4,
+  // ect
+);
+
+$opacities-dark: (
+  default: 1,
+  primary-text: 0.8,
+  secondary-text: 0.6,
+  box-shadow: 0.5,
+  border-strong: 0.8,
+  border-medium: 0.6,
+  border-weak: 0.4,
+  // ect
+);

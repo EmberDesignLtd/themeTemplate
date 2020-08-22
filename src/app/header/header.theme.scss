@@ -1,0 +1,5 @@
+@mixin header-theme($theme) {
+  .header {
+    background: theme-colour($theme, foreground);
+  }
+}
